@@ -3,9 +3,17 @@ import type { Component } from 'solid-js';
 import { useEditorIsActive } from '../bridge/create-editor-store';
 import { useEditor } from '../bridge/editor-context';
 
-const TOGGLE: Record<string, () => void> = {};
+import styles from '../styles/bubble-menu.module.css';
 
 type MarkType = 'bold' | 'italic' | 'strike' | 'code' | 'underline';
+
+const labels: Record<MarkType, string> = {
+  bold: 'B',
+  italic: 'I',
+  strike: 'S',
+  code: '</>',
+  underline: 'U',
+};
 
 const commands: Record<MarkType, (editor: NonNullable<ReturnType<ReturnType<typeof useEditor>>>) => void> = {
   bold: (ed) => ed.chain().focus().toggleBold().run(),
@@ -22,9 +30,11 @@ export const MarkButton: Component<{ type: MarkType; class?: string }> = (props)
   return (
     <button
       type='button'
-      class={props.class}
-      classList={{ active: !!active() }}
+      data-mark={props.type}
+      class={`${styles.button}${props.class ? ` ${props.class}` : ''}`}
+      classList={{ [styles.buttonActive]: !!active() }}
       disabled={!editor()}
+      aria-label={props.type}
       aria-pressed={!!active()}
       onMouseDown={(e) => e.preventDefault()}
       onClick={() => {
@@ -32,7 +42,7 @@ export const MarkButton: Component<{ type: MarkType; class?: string }> = (props)
         if (!ed) return;
         commands[props.type](ed);
       }}>
-      {props.type}
+      {labels[props.type]}
     </button>
   );
 };

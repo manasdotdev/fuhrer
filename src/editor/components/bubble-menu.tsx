@@ -6,6 +6,8 @@ import { useEditor } from '../bridge/editor-context';
 import { BubbleMenuPlugin } from '../plugins/bubble-menu-plugin';
 import type { BubbleMenuPluginProps } from '../plugins/bubble-menu-plugin';
 
+import styles from '../styles/bubble-menu.module.css';
+
 type Props = Omit<BubbleMenuPluginProps, 'editor' | 'element' | 'pluginKey'> & {
   editor?: Editor | null;
   class?: string;
@@ -46,7 +48,7 @@ export const BubbleMenu: ParentComponent<Props> = (props) => {
   });
 
   return (
-    <div ref={setEl} class={props.class} style={{ visibility: 'hidden', position: 'absolute' }}>
+    <div ref={setEl} class={`${styles.menu}${props.class ? ` ${props.class}` : ''}`} style={{ visibility: 'hidden', position: 'absolute' }}>
       {props.children}
     </div>
   );
