@@ -1,9 +1,11 @@
 {
-  "name": "vite-template-solid",
+  "name": "fuhrer",
   "version": "0.0.0",
-  "description": "",
   "license": "MIT",
   "type": "module",
+  "exports": {
+    ".": "./src/editor/index.ts"
+  },
   "scripts": {
     "start": "vite",
     "dev": "vite",
