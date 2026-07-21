@@ -11,7 +11,7 @@
   "arrowParens": "always",
   "sortImports": true,
   "sortTailwindcss": {
-    "stylesheet": "./src/index.css",
+    "stylesheet": "./src/playground/index.css",
     "functions": ["clsx", "cn"],
     "preserveWhitespace": true
   }
