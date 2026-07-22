@@ -1,20 +1,33 @@
+import { Placeholder } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { createSignal, type Component } from 'solid-js';
 
-import { BubbleMenu, EditorContent, MarkButton } from '../editor';
+import { BubbleMenu, createTitleBodyBridge, EditorContent, MarkButton } from '../editor';
 
 const PostPage: Component = () => {
-  const extensions = [StarterKit];
+  const bridge = createTitleBodyBridge();
   const [title, setTitle] = createSignal('');
+
+  const extensions = [
+    StarterKit,
+    Placeholder.configure({
+      placeholder: 'Begin writing your post...',
+      showOnlyCurrent: false,
+    }),
+  ];
+  const options = bridge.withEditorOptions({ extensions });
 
   return (
     <div class='min-h-screen overflow-x-hidden'>
       <div class='mx-auto max-w-[740px] px-6 py-[15vmin] lg:px-0'>
         <textarea
+          ref={bridge.setTitleEl}
+          autofocus
           value={title()}
           placeholder='Post title'
           rows={1}
           class='mt-2 textarea'
+          onKeyDown={bridge.onTitleKeyDown}
           onInput={(e) => {
             const el = e.currentTarget;
             setTitle(el.value);
@@ -22,7 +35,7 @@ const PostPage: Component = () => {
             el.style.height = `${el.scrollHeight}px`;
           }}
         />
-        <EditorContent options={{ extensions, autofocus: 'end' }}>
+        <EditorContent options={options}>
           <BubbleMenu>
             <MarkButton type='bold' />
             <MarkButton type='italic' />

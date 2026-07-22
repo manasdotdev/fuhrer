@@ -266,6 +266,16 @@
   text-decoration: underline;
 }
 
+.root:global(.tiptap) p:global(.is-editor-empty):only-child::before,
+.root :global(.tiptap) p:global(.is-editor-empty):only-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  font-size: 1.2rem;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 500px) {
   .root:global(.tiptap) h1,
   .root :global(.tiptap) h1 {
