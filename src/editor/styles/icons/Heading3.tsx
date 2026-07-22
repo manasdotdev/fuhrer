@@ -1,0 +1,5 @@
+export const Heading3Icon = () => (
+  <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' aria-hidden='true'>
+    <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' d='M7 19.5v-6.25M7 7v6.25m0 0h10M17 7v12.5' />
+  </svg>
+);

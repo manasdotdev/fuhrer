@@ -4,5 +4,6 @@ export { createTitleBodyBridge } from './bridge/create-title-body-bridge';
 export { EditorContent } from './bridge/editor-content';
 export { EditorProvider, useEditor } from './bridge/editor-context';
 export { BubbleMenu } from './components/bubble-menu';
-export { MarkButton } from './components/mark-button';
+export { MarkButton, MenuDivider } from './components/mark-button';
 export type { CreateEditorOptions, EditorAccessor } from './bridge/types';
+export type { MarkType } from './components/mark-button';

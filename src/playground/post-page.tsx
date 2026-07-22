@@ -2,7 +2,7 @@ import { Placeholder } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { createSignal, type Component } from 'solid-js';
 
-import { BubbleMenu, createTitleBodyBridge, EditorContent, MarkButton } from '../editor';
+import { BubbleMenu, createTitleBodyBridge, EditorContent, MarkButton, MenuDivider } from '../editor';
 
 const PostPage: Component = () => {
   const bridge = createTitleBodyBridge();
@@ -39,9 +39,13 @@ const PostPage: Component = () => {
           <BubbleMenu>
             <MarkButton type='bold' />
             <MarkButton type='italic' />
-            <MarkButton type='strike' />
-            <MarkButton type='code' />
-            <MarkButton type='underline' />
+            <MarkButton type='heading2' />
+            <MarkButton type='heading3' />
+            <MenuDivider />
+            <MarkButton type='quote' />
+            <MarkButton type='link' />
+            <MenuDivider />
+            <MarkButton type='snippet' />
           </BubbleMenu>
         </EditorContent>
       </div>

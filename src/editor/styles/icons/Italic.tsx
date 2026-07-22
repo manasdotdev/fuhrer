@@ -1,0 +1,5 @@
+export const ItalicIcon = () => (
+  <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' aria-hidden='true'>
+    <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' d='M22 2h-9.333m-1.334 20H2m4.667 0L17.333 2' />
+  </svg>
+);
