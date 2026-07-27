@@ -8,6 +8,7 @@ import { DividerIcon } from './Divider';
 import { GlobeIcon } from './Globe';
 import { Heading2Icon } from './Heading2';
 import { Heading3Icon } from './Heading3';
+import { ImageIcon } from './Image';
 import { ItalicIcon } from './Italic';
 import { LinkIcon } from './Link';
 import { OrderedListIcon } from './OrderedList';
@@ -25,6 +26,7 @@ export {
   GlobeIcon,
   Heading3Icon,
   Heading2Icon,
+  ImageIcon,
   ItalicIcon,
   LinkIcon,
   OrderedListIcon,

@@ -1,0 +1,131 @@
+.card {
+  margin: 2rem 0 0;
+  max-width: 100%;
+}
+
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.empty {
+  border: 1px solid #30b354;
+  background: #fff;
+  overflow: hidden;
+}
+
+.filled {
+  overflow: hidden;
+}
+
+.filledSelected {
+  border: 1px solid #30b354;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 12.5rem;
+  padding: 2rem 1.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #adb5bd;
+  transition: background 0.15s ease;
+}
+
+.dropzone:hover,
+.dropzone[data-dragging] {
+  background: #f6fef8;
+}
+
+.dropzoneIcon {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  color: #c5ccd3;
+}
+
+.dropzoneIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.dropzoneLabel {
+  margin: 0;
+  font-family: var(--editor-heading-font, 'Inter Variable', Inter, sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.01em;
+  color: #adb5bd;
+}
+
+.preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  cursor: default;
+}
+
+.meta {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-top: 1px solid #dde1e5;
+  background: #fff;
+}
+
+.metaInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.65rem 0.85rem;
+  font-family: var(--editor-heading-font, 'Inter Variable', Inter, sans-serif);
+  font-size: 0.875rem;
+  font-style: normal;
+  color: var(--editor-grey-900, #394047);
+}
+
+.metaInput::placeholder {
+  color: #adb5bd;
+}
+
+.altButton {
+  flex-shrink: 0;
+  border: none;
+  border-left: 1px solid #dde1e5;
+  background: #fff;
+  padding: 0 0.85rem;
+  font-family: var(--editor-heading-font, 'Inter Variable', Inter, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #7a8490;
+  cursor: pointer;
+}
+
+.altButton:hover,
+.altButtonActive {
+  color: #249a44;
+  background: #f6fef8;
+}
+
+.caption {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-family: var(--editor-body-font, Georgia, serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #7a8490;
+  line-height: 1.4;
+}

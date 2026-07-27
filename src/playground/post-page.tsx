@@ -4,7 +4,7 @@ import { Placeholder } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { createSignal, type Component } from 'solid-js';
 
-import { BubbleMenu, createTitleBodyBridge, EditorContent, LinkToolbar, MarkButton, MenuDivider, SlashMenu, SlashMenuExtension } from '../editor';
+import { BubbleMenu, createTitleBodyBridge, EditorContent, Image, LinkToolbar, MarkButton, MenuDivider, SlashMenu, SlashMenuExtension } from '../editor';
 import { ExportToJson } from '../editor/components/export-to-json';
 
 const PostPage: Component = () => {
@@ -15,6 +15,7 @@ const PostPage: Component = () => {
   const extensions = [
     SlashMenuExtension,
     StarterKit,
+    Image,
     Link.configure({
       openOnClick: false,
       autolink: true,

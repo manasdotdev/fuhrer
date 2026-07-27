@@ -258,6 +258,40 @@
   border-top: 1px solid var(--editor-grey-300);
 }
 
+/* Images / figures */
+.root:global(.tiptap) :is(img, figure),
+.root :global(.tiptap) :is(img, figure) {
+  margin: 2rem 0 0;
+  max-width: 100%;
+}
+
+.root:global(.tiptap) img,
+.root :global(.tiptap) img {
+  display: block;
+  height: auto;
+}
+
+.root:global(.tiptap) figure img,
+.root :global(.tiptap) figure img {
+  margin: 0;
+}
+
+.root:global(.tiptap) figcaption,
+.root :global(.tiptap) figcaption {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-family: var(--editor-body-font);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--editor-grey-500);
+  line-height: 1.4;
+}
+
+.root:global(.tiptap) p + :is(img, figure, [data-node-view-wrapper]),
+.root :global(.tiptap) p + :is(img, figure, [data-node-view-wrapper]) {
+  margin-top: 2rem;
+}
+
 /* Strike / underline */
 .root:global(.tiptap) s,
 .root :global(.tiptap) s {

@@ -5,7 +5,7 @@ import { For, Show, createEffect, createMemo, createSignal, onCleanup, type Comp
 import { Dynamic } from 'solid-js/web';
 
 import { useEditor } from '../bridge/editor-context';
-import { BlockquoteIcon, BulletListIcon, CodeIcon, DividerIcon, Heading2Icon, Heading3Icon, OrderedListIcon, TextIcon } from '../styles/icons';
+import { BlockquoteIcon, BulletListIcon, CodeIcon, DividerIcon, Heading2Icon, Heading3Icon, ImageIcon, OrderedListIcon, TextIcon } from '../styles/icons';
 
 import styles from '../styles/slash-menu.module.css';
 
@@ -19,6 +19,7 @@ const ITEM_ICONS: Record<string, Component> = {
   orderedList: OrderedListIcon,
   blockquote: BlockquoteIcon,
   codeBlock: CodeIcon,
+  image: ImageIcon,
   horizontalRule: DividerIcon,
 };
 
