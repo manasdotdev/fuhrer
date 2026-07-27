@@ -23,6 +23,6 @@ body {
 }
 
 @utility textarea {
-  @apply mb-3 w-full min-w-[auto] resize-none overflow-hidden bg-transparent pb-2 font-sans text-[2.75rem] leading-[1.15] tracking-[0.01em] text-[#15171A] placeholder:text-[#AEB7C1] focus-visible:outline-none;
-  font-weight: 650;
+  @apply mb-3 w-full min-w-[auto] resize-none overflow-hidden bg-transparent pb-2 font-sans text-[2.85rem] leading-[1.15] font-bold tracking-[0.01em] text-[#15171A] placeholder:text-[#AEB7C1] focus-visible:outline-none;
+  font-weight: 700;
 }

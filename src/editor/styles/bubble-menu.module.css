@@ -65,7 +65,8 @@
 }
 
 .buttonActive {
-  background: rgb(221 225 229 / 80%);
+  background: #e4e7ea;
+
   color: #16a34a;
 }
 
