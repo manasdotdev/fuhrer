@@ -1,31 +1,17 @@
 import { FileUpload } from '@ark-ui/solid/file-upload';
 import type { NodeViewProps } from '@tiptap/core';
-import { Show, createMemo, createSignal, type Component } from 'solid-js';
+import { Show, createMemo, type Component } from 'solid-js';
 
-import { ImageIcon } from '../styles/icons';
+import { AudioIcon } from '../styles/icons';
 import { readFileAsDataUrl } from '../utils/read-file-as-data-url';
 
 import styles from '../styles/image-node.module.css';
 
-export const ImageNodeView: Component<NodeViewProps> = (props) => {
-  const [editingAlt, setEditingAlt] = createSignal(false);
-
+export const AudioNodeView: Component<NodeViewProps> = (props) => {
   const src = createMemo(() => (props.node.attrs.src as string | null) ?? null);
-  const alt = createMemo(() => (props.node.attrs.alt as string | null) ?? '');
   const caption = createMemo(() => (props.node.attrs.caption as string | null) ?? '');
-  const hasImage = createMemo(() => !!src());
+  const hasAudio = createMemo(() => !!src());
   const selected = createMemo(() => props.selected);
-
-  const fieldValue = () => (editingAlt() ? alt() : caption());
-  const fieldPlaceholder = () => (editingAlt() ? 'Describe image for accessibility' : 'Type caption for image (optional)');
-
-  const onFieldInput = (value: string) => {
-    if (editingAlt()) {
-      props.updateAttributes({ alt: value || null });
-      return;
-    }
-    props.updateAttributes({ caption: value || null });
-  };
 
   const onFileAccept = async (details: { files: File[] }) => {
     const file = details.files[0];
@@ -33,7 +19,7 @@ export const ImageNodeView: Component<NodeViewProps> = (props) => {
     const dataUrl = await readFileAsDataUrl(file);
     props.updateAttributes({
       src: dataUrl,
-      alt: alt() || file.name.replace(/\.[^.]+$/, '') || null,
+      caption: caption() || file.name.replace(/\.[^.]+$/, '') || null,
     });
   };
 
@@ -47,15 +33,15 @@ export const ImageNodeView: Component<NodeViewProps> = (props) => {
     <div class={styles.card} data-drag-handle draggable='true' onMouseDown={selectCard}>
       <figure class={styles.figure}>
         <Show
-          when={hasImage()}
+          when={hasAudio()}
           fallback={
             <div class={styles.empty}>
-              <FileUpload.Root accept='image/*' maxFiles={1} onFileAccept={onFileAccept}>
+              <FileUpload.Root accept='audio/*' maxFiles={1} onFileAccept={onFileAccept}>
                 <FileUpload.Dropzone class={styles.dropzone} data-file-upload-dropzone>
                   <span class={styles.dropzoneIcon} aria-hidden='true'>
-                    <ImageIcon />
+                    <AudioIcon />
                   </span>
-                  <p class={styles.dropzoneLabel}>Click to select an image</p>
+                  <p class={styles.dropzoneLabel}>Click to select an audio file</p>
                 </FileUpload.Dropzone>
                 <FileUpload.HiddenInput />
               </FileUpload.Root>
@@ -63,44 +49,26 @@ export const ImageNodeView: Component<NodeViewProps> = (props) => {
                 <input
                   type='text'
                   class={styles.metaInput}
-                  value={fieldValue()}
-                  placeholder={fieldPlaceholder()}
+                  value={caption()}
+                  placeholder='Type caption for audio (optional)'
                   onMouseDown={(e) => e.stopPropagation()}
-                  onInput={(e) => onFieldInput(e.currentTarget.value)}
+                  onInput={(e) => props.updateAttributes({ caption: e.currentTarget.value || null })}
                 />
-                <button
-                  type='button'
-                  class={styles.altButton}
-                  classList={{ [styles.altButtonActive]: editingAlt() }}
-                  aria-pressed={editingAlt()}
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => setEditingAlt((v) => !v)}>
-                  Alt
-                </button>
               </div>
             </div>
           }>
           <div class={styles.filled} classList={{ [styles.filledSelected]: selected() }}>
-            <img class={styles.preview} src={src()!} alt={alt()} draggable='false' />
+            <audio class={`${styles.player} ${styles.playerAudio}`} src={src()!} controls preload='metadata' draggable='false' />
             <Show when={selected()}>
               <div class={styles.meta} contentEditable={false}>
                 <input
                   type='text'
                   class={styles.metaInput}
-                  value={fieldValue()}
-                  placeholder={fieldPlaceholder()}
+                  value={caption()}
+                  placeholder='Type caption for audio (optional)'
                   onMouseDown={(e) => e.stopPropagation()}
-                  onInput={(e) => onFieldInput(e.currentTarget.value)}
+                  onInput={(e) => props.updateAttributes({ caption: e.currentTarget.value || null })}
                 />
-                <button
-                  type='button'
-                  class={styles.altButton}
-                  classList={{ [styles.altButtonActive]: editingAlt() }}
-                  aria-pressed={editingAlt()}
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => setEditingAlt((v) => !v)}>
-                  Alt
-                </button>
               </div>
             </Show>
           </div>

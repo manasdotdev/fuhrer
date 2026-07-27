@@ -258,21 +258,30 @@
   border-top: 1px solid var(--editor-grey-300);
 }
 
-/* Images / figures */
-.root:global(.tiptap) :is(img, figure),
-.root :global(.tiptap) :is(img, figure) {
+/* Images / figures / media */
+.root:global(.tiptap) :is(img, figure, video, audio),
+.root :global(.tiptap) :is(img, figure, video, audio) {
   margin: 2rem 0 0;
   max-width: 100%;
 }
 
 .root:global(.tiptap) img,
-.root :global(.tiptap) img {
+.root:global(.tiptap) video,
+.root :global(.tiptap) img,
+.root :global(.tiptap) video {
   display: block;
   height: auto;
+  width: 100%;
 }
 
-.root:global(.tiptap) figure img,
-.root :global(.tiptap) figure img {
+.root:global(.tiptap) audio,
+.root :global(.tiptap) audio {
+  display: block;
+  width: 100%;
+}
+
+.root:global(.tiptap) figure :is(img, video, audio),
+.root :global(.tiptap) figure :is(img, video, audio) {
   margin: 0;
 }
 
@@ -287,8 +296,8 @@
   line-height: 1.4;
 }
 
-.root:global(.tiptap) p + :is(img, figure, [data-node-view-wrapper]),
-.root :global(.tiptap) p + :is(img, figure, [data-node-view-wrapper]) {
+.root:global(.tiptap) p + :is(img, figure, video, audio, [data-node-view-wrapper]),
+.root :global(.tiptap) p + :is(img, figure, video, audio, [data-node-view-wrapper]) {
   margin-top: 2rem;
 }
 

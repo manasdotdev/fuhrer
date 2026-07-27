@@ -110,7 +110,7 @@ class SolidNodeView implements PMNodeView {
     const target = event.target as HTMLElement | null;
     if (!target) return false;
 
-    if (target.closest('input, textarea, select, button, [contenteditable="true"], [data-file-upload-dropzone]')) {
+    if (target.closest('input, textarea, select, button, audio, video, [contenteditable="true"], [data-file-upload-dropzone]')) {
       return true;
     }
 

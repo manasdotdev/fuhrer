@@ -74,6 +74,20 @@
   cursor: default;
 }
 
+.player {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: top;
+  background: #0f1113;
+}
+
+.playerAudio {
+  min-height: 3rem;
+  padding: 0.75rem 0.85rem;
+  background: #f4f5f6;
+}
+
 .meta {
   display: flex;
   align-items: stretch;

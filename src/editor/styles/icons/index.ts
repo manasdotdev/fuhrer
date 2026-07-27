@@ -1,5 +1,6 @@
 // barell file
 
+import { AudioIcon } from './Audio';
 import { BlockquoteIcon } from './Blockquote';
 import { BoldIcon } from './Bold';
 import { BulletListIcon } from './BulletList';
@@ -16,8 +17,10 @@ import { PencilIcon } from './Pencil';
 import { SnippetIcon } from './Snippet';
 import { TextIcon } from './Text';
 import { TrashIcon } from './Trash';
+import { VideoIcon } from './Video';
 
 export {
+  AudioIcon,
   BlockquoteIcon,
   BoldIcon,
   BulletListIcon,
@@ -34,4 +37,5 @@ export {
   SnippetIcon,
   TextIcon,
   TrashIcon,
+  VideoIcon,
 };

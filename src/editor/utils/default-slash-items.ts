@@ -27,6 +27,8 @@ export function createDefaultSlashItems(getEditor: () => Editor): MenuElement[] 
     item('blockquote', 'Quote', 'Blocks', (ed) => ed.chain().focus().toggleBlockquote().run()),
     item('codeBlock', 'Code block', 'Blocks', (ed) => ed.chain().focus().toggleCodeBlock().run()),
     item('image', 'Image', 'Blocks', (ed) => ed.chain().focus().insertImageCard().run()),
+    item('video', 'Video', 'Blocks', (ed) => ed.chain().focus().insertVideoCard().run()),
+    item('audio', 'Audio', 'Blocks', (ed) => ed.chain().focus().insertAudioCard().run()),
     item('horizontalRule', 'Divider', 'Blocks', (ed) => ed.chain().focus().setHorizontalRule().run()),
   ];
 }
