@@ -4,6 +4,7 @@ import { Dynamic } from 'solid-js/web';
 import { useEditorIsActive } from '../bridge/create-editor-store';
 import { useEditor } from '../bridge/editor-context';
 import { BoldIcon, ItalicIcon, Heading3Icon, Heading2Icon, BlockquoteIcon, LinkIcon, SnippetIcon } from '../styles/icons';
+import { useLinkToolbar } from './link-toolbar';
 
 import styles from '../styles/bubble-menu.module.css';
 
@@ -40,13 +41,13 @@ const shortcuts: Partial<Record<MarkType, string[]>> = {
 
 type EditorInstance = NonNullable<ReturnType<ReturnType<typeof useEditor>>>;
 
-const commands: Record<MarkType, (editor: EditorInstance) => void> = {
+const commands: Record<MarkType, (editor: EditorInstance, openLinkEdit: () => void) => void> = {
   bold: (ed) => ed.chain().focus().toggleBold().run(),
   italic: (ed) => ed.chain().focus().toggleItalic().run(),
   heading2: (ed) => ed.chain().focus().toggleHeading({ level: 2 }).run(),
   heading3: (ed) => ed.chain().focus().toggleHeading({ level: 3 }).run(),
   quote: (ed) => ed.chain().focus().toggleBlockquote().run(),
-  link: () => {},
+  link: (_ed, openLinkEdit) => openLinkEdit(),
   snippet: () => {},
 };
 
@@ -67,6 +68,7 @@ const activeName: Record<MarkType, string> = {
 
 export const MarkButton: Component<{ type: MarkType; class?: string }> = (props) => {
   const editor = useEditor();
+  const linkToolbar = useLinkToolbar();
   const active = useEditorIsActive(editor, activeName[props.type], activeAttrs[props.type]);
 
   return (
@@ -83,7 +85,7 @@ export const MarkButton: Component<{ type: MarkType; class?: string }> = (props)
         onClick={() => {
           const ed = editor();
           if (!ed) return;
-          commands[props.type](ed);
+          commands[props.type](ed, () => linkToolbar.openEdit());
         }}>
         <Dynamic component={icons[props.type]} />
       </button>

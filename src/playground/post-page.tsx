@@ -1,8 +1,9 @@
+import Link from '@tiptap/extension-link';
 import { Placeholder } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { createSignal, type Component } from 'solid-js';
 
-import { BubbleMenu, createTitleBodyBridge, EditorContent, MarkButton, MenuDivider } from '../editor';
+import { BubbleMenu, createTitleBodyBridge, EditorContent, LinkToolbar, MarkButton, MenuDivider } from '../editor';
 
 const PostPage: Component = () => {
   const bridge = createTitleBodyBridge();
@@ -10,11 +11,17 @@ const PostPage: Component = () => {
 
   const extensions = [
     StarterKit,
+    Link.configure({
+      openOnClick: false,
+      autolink: true,
+      defaultProtocol: 'https',
+    }),
     Placeholder.configure({
       placeholder: 'Begin writing your post...',
       showOnlyCurrent: false,
     }),
   ];
+
   const options = bridge.withEditorOptions({ extensions });
 
   return (
@@ -36,17 +43,19 @@ const PostPage: Component = () => {
           }}
         />
         <EditorContent options={options}>
-          <BubbleMenu>
-            <MarkButton type='bold' />
-            <MarkButton type='italic' />
-            <MarkButton type='heading2' />
-            <MarkButton type='heading3' />
-            <MenuDivider />
-            <MarkButton type='quote' />
-            <MarkButton type='link' />
-            <MenuDivider />
-            <MarkButton type='snippet' />
-          </BubbleMenu>
+          <LinkToolbar>
+            <BubbleMenu>
+              <MarkButton type='bold' />
+              <MarkButton type='italic' />
+              <MarkButton type='heading2' />
+              <MarkButton type='heading3' />
+              <MenuDivider />
+              <MarkButton type='quote' />
+              <MarkButton type='link' />
+              <MenuDivider />
+              <MarkButton type='snippet' />
+            </BubbleMenu>
+          </LinkToolbar>
         </EditorContent>
       </div>
     </div>

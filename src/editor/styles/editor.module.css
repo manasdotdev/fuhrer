@@ -184,11 +184,14 @@
   margin-top: 1.875rem;
 }
 
-/* Links */
+/* Links — look linked; open only via the hover toolbar URL. */
 .root:global(.tiptap) a,
 .root :global(.tiptap) a {
   color: var(--editor-accent);
   text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.15em;
+  cursor: text;
 }
 
 /* Blockquote */
