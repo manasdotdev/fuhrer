@@ -1,13 +1,16 @@
+import type { JSONContent } from '@tiptap/core';
 import Link from '@tiptap/extension-link';
 import { Placeholder } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { createSignal, type Component } from 'solid-js';
 
 import { BubbleMenu, createTitleBodyBridge, EditorContent, LinkToolbar, MarkButton, MenuDivider, SlashMenu, SlashMenuExtension } from '../editor';
+import { ExportToJson } from '../editor/components/export-to-json';
 
 const PostPage: Component = () => {
   const bridge = createTitleBodyBridge();
   const [title, setTitle] = createSignal('');
+  const [doc, setDoc] = createSignal<JSONContent | undefined>();
 
   const extensions = [
     SlashMenuExtension,
@@ -23,10 +26,23 @@ const PostPage: Component = () => {
     }),
   ];
 
-  const options = bridge.withEditorOptions({ extensions });
+  const options = bridge.withEditorOptions({
+    extensions,
+    onCreate: ({ editor }) => setDoc(editor.getJSON()),
+    onUpdate: ({ editor }) => setDoc(editor.getJSON()),
+  });
 
   return (
     <div class='min-h-screen overflow-x-hidden'>
+      <ExportToJson
+        disabled={!doc()}
+        filename={() => title().trim().toLowerCase().replace(/\s+/g, '-').slice(0, 40) || 'post'}
+        data={() => {
+          const body = doc() ?? bridge.editor()?.getJSON();
+          if (!body) return null;
+          return { title: title(), body };
+        }}
+      />
       <div class='mx-auto max-w-[740px] px-6 py-[15vmin] lg:px-0'>
         <textarea
           ref={bridge.setTitleEl}
