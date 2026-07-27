@@ -38,9 +38,24 @@ importers:
       '@tiptap/starter-kit':
         specifier: ^3.28.0
         version: 3.28.0
+      '@tiptap/suggestion':
+        specifier: ^3.29.0
+        version: 3.29.0(@floating-ui/dom@1.8.0)(@tiptap/core@3.28.0(@tiptap/pm@3.28.0))(@tiptap/pm@3.28.0)
       lucide-solid:
         specifier: ^1.25.0
         version: 1.25.0(solid-js@1.9.9)
+      prosemirror-model:
+        specifier: ^1.25.11
+        version: 1.25.11
+      prosemirror-slash-menu:
+        specifier: ^0.4.6
+        version: 0.4.6(prosemirror-model@1.25.11)(prosemirror-state@1.4.4)(prosemirror-view@1.42.1)
+      prosemirror-state:
+        specifier: ^1.4.4
+        version: 1.4.4
+      prosemirror-view:
+        specifier: ^1.42.1
+        version: 1.42.1
       solid-js:
         specifier: ^1.9.9
         version: 1.9.9
@@ -903,6 +918,13 @@ packages:
   '@tiptap/starter-kit@3.28.0':
     resolution: {integrity: sha512-pqvFpValV+ONtlu3l4s73ROm/tEjoGMmt6uHmSJaLbqTcMHkdWuR3flJ/5brr4IDHe1foxmNicMbRxlje7yBYw==}
 
+  '@tiptap/suggestion@3.29.0':
+    resolution: {integrity: sha512-M/84rGfmyNc9meGqbbWnfpZpRttW34Hltk3XxeXKUGNx+87CQazR49sXxDtvcP5JHeAgCZ2gtYkhstpOKPQ6qQ==}
+    peerDependencies:
+      '@floating-ui/dom': ^1.0.0
+      '@tiptap/core': 3.29.0
+      '@tiptap/pm': 3.29.0
+
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
 
@@ -1433,6 +1455,14 @@ packages:
 
   prosemirror-schema-list@1.5.1:
     resolution: {integrity: sha512-927lFx/uwyQaGwJxLWCZRkjXG0p48KpMj6ueoYiu4JX05GGuGcgzAy62dfiV8eFZftgyBUvLx76RsMe20fJl+Q==}
+
+  prosemirror-slash-menu@0.4.6:
+    resolution: {integrity: sha512-4zjLRUkC/tLByiDl9EzhpaR+Vq6I5N1aG+aPhi75bw7ZgYUvypvQ6w4MMKxGa+LmCaAXmv+oD4KOOu3Np7TjzA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      prosemirror-model: ^1.19.3
+      prosemirror-state: ^1.4.3
+      prosemirror-view: ^1.31.4
 
   prosemirror-state@1.4.4:
     resolution: {integrity: sha512-6jiYHH2CIGbCfnxdHbXZ12gySFY/fz/ulZE333G6bPqIZ4F+TXo9ifiR86nAHpWnfoNjOb3o5ESi7J8Uz1jXHw==}
@@ -2362,6 +2392,12 @@ snapshots:
       '@tiptap/extensions': 3.28.0(@tiptap/core@3.28.0(@tiptap/pm@3.28.0))(@tiptap/pm@3.28.0)
       '@tiptap/pm': 3.28.0
 
+  '@tiptap/suggestion@3.29.0(@floating-ui/dom@1.8.0)(@tiptap/core@3.28.0(@tiptap/pm@3.28.0))(@tiptap/pm@3.28.0)':
+    dependencies:
+      '@floating-ui/dom': 1.8.0
+      '@tiptap/core': 3.28.0(@tiptap/pm@3.28.0)
+      '@tiptap/pm': 3.28.0
+
   '@types/babel__core@7.20.5':
     dependencies:
       '@babel/parser': 7.28.4
@@ -3223,6 +3259,12 @@ snapshots:
       prosemirror-model: 1.25.11
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.12.0
+
+  prosemirror-slash-menu@0.4.6(prosemirror-model@1.25.11)(prosemirror-state@1.4.4)(prosemirror-view@1.42.1):
+    dependencies:
+      prosemirror-model: 1.25.11
+      prosemirror-state: 1.4.4
+      prosemirror-view: 1.42.1
 
   prosemirror-state@1.4.4:
     dependencies:

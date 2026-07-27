@@ -3,13 +3,14 @@ import { Placeholder } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { createSignal, type Component } from 'solid-js';
 
-import { BubbleMenu, createTitleBodyBridge, EditorContent, LinkToolbar, MarkButton, MenuDivider } from '../editor';
+import { BubbleMenu, createTitleBodyBridge, EditorContent, LinkToolbar, MarkButton, MenuDivider, SlashMenu, SlashMenuExtension } from '../editor';
 
 const PostPage: Component = () => {
   const bridge = createTitleBodyBridge();
   const [title, setTitle] = createSignal('');
 
   const extensions = [
+    SlashMenuExtension,
     StarterKit,
     Link.configure({
       openOnClick: false,
@@ -56,6 +57,7 @@ const PostPage: Component = () => {
               <MarkButton type='snippet' />
             </BubbleMenu>
           </LinkToolbar>
+          <SlashMenu />
         </EditorContent>
       </div>
     </div>
