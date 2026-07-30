@@ -1,6 +1,6 @@
 import type { JSONContent } from '@tiptap/core';
 import Link from '@tiptap/extension-link';
-import { Placeholder } from '@tiptap/extensions';
+import { Placeholder, TrailingNode } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { createSignal, type Component } from 'solid-js';
 
@@ -18,6 +18,9 @@ const PostPage: Component = () => {
     Image,
     Video,
     Audio,
+    TrailingNode.configure({
+      node: 'paragraph',
+    }),
     Link.configure({
       openOnClick: false,
       autolink: true,
