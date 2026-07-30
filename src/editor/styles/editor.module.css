@@ -258,6 +258,15 @@
   border-top: 1px solid var(--editor-grey-300);
 }
 
+/* Selected code block / divider — match media card green border */
+.root:global(.tiptap) pre:global(.ProseMirror-selectednode),
+.root :global(.tiptap) pre:global(.ProseMirror-selectednode),
+.root:global(.tiptap) hr:global(.ProseMirror-selectednode),
+.root :global(.tiptap) hr:global(.ProseMirror-selectednode) {
+  outline: 2px solid #30b354;
+  outline-offset: 2px;
+}
+
 /* Images / figures / media */
 .root:global(.tiptap) :is(img, figure, video, audio),
 .root :global(.tiptap) :is(img, figure, video, audio) {
@@ -296,8 +305,8 @@
   line-height: 1.4;
 }
 
-.root:global(.tiptap) p + :is(img, figure, video, audio, [data-node-view-wrapper]),
-.root :global(.tiptap) p + :is(img, figure, video, audio, [data-node-view-wrapper]) {
+.root:global(.tiptap) p + :is(img, figure, video, audio, iframe, [data-node-view-wrapper]),
+.root :global(.tiptap) p + :is(img, figure, video, audio, iframe, [data-node-view-wrapper]) {
   margin-top: 2rem;
 }
 

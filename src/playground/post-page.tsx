@@ -4,7 +4,23 @@ import { Placeholder, TrailingNode } from '@tiptap/extensions';
 import StarterKit from '@tiptap/starter-kit';
 import { createSignal, type Component } from 'solid-js';
 
-import { Audio, BubbleMenu, createTitleBodyBridge, EditorContent, Image, LinkToolbar, MarkButton, MenuDivider, SlashMenu, SlashMenuExtension, Video } from '../editor';
+import {
+  Audio,
+  BubbleMenu,
+  createTitleBodyBridge,
+  DeleteNodeButton,
+  EditorContent,
+  Embed,
+  Image,
+  LinkToolbar,
+  MarkButton,
+  MenuDivider,
+  shouldShowCardBubbleMenu,
+  shouldShowTextBubbleMenu,
+  SlashMenu,
+  SlashMenuExtension,
+  Video,
+} from '../editor';
 import { ExportToJson } from '../editor/components/export-to-json';
 
 const PostPage: Component = () => {
@@ -18,6 +34,7 @@ const PostPage: Component = () => {
     Image,
     Video,
     Audio,
+    Embed,
     TrailingNode.configure({
       node: 'paragraph',
     }),
@@ -67,7 +84,7 @@ const PostPage: Component = () => {
         />
         <EditorContent options={options}>
           <LinkToolbar>
-            <BubbleMenu>
+            <BubbleMenu shouldShow={shouldShowTextBubbleMenu}>
               <MarkButton type='bold' />
               <MarkButton type='italic' />
               <MarkButton type='heading2' />
@@ -77,6 +94,9 @@ const PostPage: Component = () => {
               <MarkButton type='link' />
               <MenuDivider />
               <MarkButton type='snippet' />
+            </BubbleMenu>
+            <BubbleMenu pluginKey='cardBubbleMenu' shouldShow={shouldShowCardBubbleMenu}>
+              <DeleteNodeButton />
             </BubbleMenu>
           </LinkToolbar>
           <SlashMenu />

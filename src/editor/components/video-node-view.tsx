@@ -26,7 +26,7 @@ export const VideoNodeView: Component<NodeViewProps> = (props) => {
   const selectCard = () => {
     const pos = props.getPos();
     if (typeof pos !== 'number') return;
-    props.editor.chain().setNodeSelection(pos).run();
+    props.editor.chain().focus().setNodeSelection(pos).run();
   };
 
   return (

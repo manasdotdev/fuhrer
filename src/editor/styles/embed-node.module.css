@@ -1,0 +1,103 @@
+.card {
+  margin: 2rem 0 0;
+  max-width: 100%;
+}
+
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.empty {
+  border: 2px solid #30b354;
+  background: #fff;
+  overflow: hidden;
+}
+
+.urlInput {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--editor-heading-font, 'Inter Variable', Inter, sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--editor-grey-900, #394047);
+}
+
+.urlInput::placeholder {
+  color: #adb5bd;
+}
+
+.error {
+  margin: 0;
+  padding: 0 1rem 0.75rem;
+  font-family: var(--editor-heading-font, 'Inter Variable', Inter, sans-serif);
+  font-size: 0.8125rem;
+  color: #e11d48;
+}
+
+.filled {
+  overflow: hidden;
+  background: #0f1113;
+}
+
+.filledSelected {
+  border: 2px solid #30b354;
+}
+
+.frameWrap {
+  position: relative;
+  width: 100%;
+  background: #0f1113;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #0f1113;
+}
+
+.meta {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-top: 1px solid #dde1e5;
+  background: #fff;
+}
+
+.metaInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.65rem 0.85rem;
+  font-family: var(--editor-heading-font, 'Inter Variable', Inter, sans-serif);
+  font-size: 0.875rem;
+  font-style: normal;
+  color: var(--editor-grey-900, #394047);
+}
+
+.metaInput::placeholder {
+  color: #adb5bd;
+}
+
+.caption {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-family: var(--editor-body-font, Georgia, serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #7a8490;
+  line-height: 1.4;
+}

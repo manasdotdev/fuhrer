@@ -6,6 +6,7 @@ import { BoldIcon } from './Bold';
 import { BulletListIcon } from './BulletList';
 import { CodeIcon } from './Code';
 import { DividerIcon } from './Divider';
+import { EmbedIcon } from './Embed';
 import { GlobeIcon } from './Globe';
 import { Heading2Icon } from './Heading2';
 import { Heading3Icon } from './Heading3';
@@ -26,6 +27,7 @@ export {
   BulletListIcon,
   CodeIcon,
   DividerIcon,
+  EmbedIcon,
   GlobeIcon,
   Heading3Icon,
   Heading2Icon,
