@@ -1,4 +1,10 @@
 export { createEditor, type CreateEditorConfig, type CreateEditorOptions } from './create-editor';
 export { createEditorState, createEditorTransaction, type CreateEditorStateOptions, type EditorStateEvent, type EditorStateSnapshot } from './create-editor-state';
 export { EditorContent, type EditorContentProps } from './editor-content';
+export { EditorProvider, useCurrentEditor, useEditorContext, useOptionalEditorContext, type EditorContextValue, type EditorProviderProps } from './editor-context';
+export { NodeViewContent, type NodeViewContentProps } from './node-view-content';
+export { NodeViewWrapper, type NodeViewWrapperProps } from './node-view-wrapper';
 export { EDITOR_REACTIVE_OWNER, getEditorReactiveOwner, setEditorReactiveOwner } from './reactive-owner';
+export { SolidNodeViewContext, useSolidNodeView, type SolidNodeViewContextValue } from './solid-node-view-context';
+export { SolidNodeView, SolidNodeViewRenderer, type SolidNodeViewProps, type SolidNodeViewRendererOptions } from './solid-node-view-renderer';
+export { SolidRenderer, type SolidRendererOptions } from './solid-renderer';

@@ -1,10 +1,14 @@
 import type { Editor } from '@tiptap/core';
 import { type Component, type JSX, createEffect, createSignal, getOwner, onCleanup, splitProps } from 'solid-js';
 
+import { useOptionalEditorContext } from './editor-context';
 import { setEditorReactiveOwner } from './reactive-owner';
 
 export type EditorContentProps = Omit<JSX.HTMLAttributes<HTMLDivElement>, 'ref'> & {
-  editor: Editor | null | undefined;
+  /**
+   * Editor instance. Falls back to `EditorProvider` context when omitted.
+   */
+  editor?: Editor | null | undefined;
   ref?: (el: HTMLDivElement) => void;
 };
 
@@ -23,9 +27,10 @@ function isDomElement(value: Editor['options']['element']): value is Element {
 export const EditorContent: Component<EditorContentProps> = (props) => {
   const [local, rest] = splitProps(props, ['editor', 'ref']);
   const [container, setContainer] = createSignal<HTMLDivElement>();
+  const contextEditor = useOptionalEditorContext();
 
   createEffect(() => {
-    const editor = local.editor;
+    const editor = local.editor ?? contextEditor?.();
     const element = container();
 
     if (!editor || editor.isDestroyed || !element) {
@@ -42,7 +47,7 @@ export const EditorContent: Component<EditorContentProps> = (props) => {
       editor.setOptions({ element });
     }
 
-    // Ensure node views are wired after the DOM has been relocated.
+    // Recreate node views under this owner so Solid contexts resolve correctly.
     queueMicrotask(() => {
       if (!editor.isDestroyed) {
         editor.createNodeViews();
