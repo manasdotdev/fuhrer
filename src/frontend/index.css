@@ -78,8 +78,62 @@
   padding: 0;
 }
 
-.tiptap hr {
+/*
+ * Shared block chrome — catalog blocks (image, divider, …)
+ * hover: green-200 | selected: green-500
+ */
+.tiptap .block-chrome {
+  outline: 2px solid transparent;
+  outline-offset: 8px;
+  transition: outline-color 120ms ease;
+}
+
+.tiptap .block-chrome:hover:not(.ProseMirror-selectednode):not([data-selected]) {
+  outline-color: var(--color-green-200, #bbf7d0);
+}
+
+.tiptap .block-chrome.ProseMirror-selectednode,
+.tiptap .block-chrome[data-selected] {
+  outline-color: var(--color-green-500, #22c55e);
+}
+
+/* Source node while dragging — grayed / faded
+ * Class is on the ProseMirror node DOM (resize wrapper and/or .block-chrome). */
+.tiptap .is-dragging {
+  opacity: 0.7 !important;
+  outline-color: transparent !important;
+}
+
+/* Image — https://tiptap.dev/docs/editor/extensions/nodes/image */
+.tiptap img.block-chrome {
+  display: block;
+  height: auto;
+  margin: 1.5rem 0;
+  max-width: 100%;
+}
+
+/* Divider — https://tiptap.dev/docs/editor/extensions/nodes/horizontal-rule */
+.tiptap hr.block-chrome.divider {
   border: none;
-  border-top: 1px solid #e5e5e5;
-  margin: 1.25em 0;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 17px;
+  margin: 2rem 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+
+.tiptap hr.block-chrome.divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: #e5e5e5;
+  transform: translateY(-50%);
 }
