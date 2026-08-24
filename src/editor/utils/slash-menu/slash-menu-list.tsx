@@ -21,8 +21,7 @@ export const SlashMenuList: Component<SlashMenuListProps> = (props) => {
               classList={{ 'is-selected': index() === props.selectedIndex }}
               aria-selected={index() === props.selectedIndex}
               onMouseDown={(event) => event.preventDefault()}
-              onClick={() => props.command(item)}
-            >
+              onClick={() => props.command(item)}>
               <span class='slash-menu__title'>{item.title}</span>
               <Show when={item.subtext}>{(subtext) => <span class='slash-menu__subtext'>{subtext()}</span>}</Show>
             </button>

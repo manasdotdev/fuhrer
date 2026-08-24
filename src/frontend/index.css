@@ -112,6 +112,108 @@
   max-width: 100%;
 }
 
+/* Image upload dropzone — Ark FileUpload + TipTap imageUpload node */
+.tiptap .image-upload-block {
+  margin: 1.5rem 0;
+}
+
+.tiptap .image-upload {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background: #f4f4f5;
+}
+
+.tiptap .image-upload__dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22rem;
+  padding: 3rem 1.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.tiptap .image-upload__dropzone[data-dragging] {
+  background: #ecfdf5;
+}
+
+.tiptap .image-upload__prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  color: #a3a3a3;
+  pointer-events: none;
+}
+
+.tiptap .image-upload__icon {
+  color: #a3a3a3;
+}
+
+.tiptap .image-upload__label {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: #737373;
+  text-align: center;
+}
+
+.tiptap .image-upload__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid #e5e5e5;
+  background: white;
+  padding-top: 0.6rem;
+}
+
+.tiptap .image-upload__meta-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #171717;
+  text-align: center;
+  outline: none;
+}
+
+.tiptap .image-upload__meta-input::placeholder {
+  color: #a3a3a3;
+  text-align: center;
+}
+
+.tiptap .image-upload__toggle {
+  flex-shrink: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.2rem;
+  background: #fff;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #525252;
+  cursor: pointer;
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+}
+
+.tiptap .image-upload__toggle:hover {
+  background: #f5f5f5;
+}
+
+.tiptap .image-upload__toggle.is-alt {
+  border-color: #22c55e;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
 /* Divider — https://tiptap.dev/docs/editor/extensions/nodes/horizontal-rule */
 .tiptap hr.block-chrome.divider {
   border: none;

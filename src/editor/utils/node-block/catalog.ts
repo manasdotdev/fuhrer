@@ -7,11 +7,13 @@ export type BlockDefinition = {
   /** TipTap node name when known; catalog key otherwise */
   name: string;
   kind: BlockKind;
-  draggable: true;
+  /** Empty placeholders (e.g. imageUpload) stay non-draggable until they become content. */
+  draggable: boolean;
 };
 
 export const BLOCK_CATALOG = {
   image: { name: 'image', kind: 'atom', draggable: true },
+  imageUpload: { name: 'imageUpload', kind: 'atom', draggable: false },
   divider: { name: 'horizontalRule', kind: 'atom', draggable: true },
   button: { name: 'button', kind: 'atom', draggable: true },
   bookmark: { name: 'bookmark', kind: 'atom', draggable: true },

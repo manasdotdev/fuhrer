@@ -1,6 +1,6 @@
 import { type Component, type JSX, type ParentProps, splitProps } from 'solid-js';
 
-import { NodeViewWrapper, type NodeViewWrapperProps } from '../solid/node-view-wrapper';
+import { NodeViewWrapper, type NodeViewWrapperProps } from '../../solid/node-view-wrapper';
 import { mergeBlockChromeClass } from './chrome';
 
 export type BlockShellProps = ParentProps<

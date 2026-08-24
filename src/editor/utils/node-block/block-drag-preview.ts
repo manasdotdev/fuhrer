@@ -5,7 +5,11 @@ import { BLOCK_CATALOG } from './catalog';
 
 const BLOCK_DRAG_PREVIEW_KEY = new PluginKey('blockDragPreview');
 
-const DEFAULT_BLOCK_NAMES = new Set(Object.values(BLOCK_CATALOG).map((block) => block.name));
+const DEFAULT_BLOCK_NAMES = new Set(
+  Object.values(BLOCK_CATALOG)
+    .filter((block) => block.draggable)
+    .map((block) => block.name),
+);
 
 export type BlockDragPreviewOptions = {
   /** Max width of the cursor drag thumbnail (px). */

@@ -1,6 +1,6 @@
 import type { SuggestionKeyDownProps, SuggestionOptions, SuggestionProps } from '@tiptap/suggestion';
 
-import { SolidRenderer } from '../solid';
+import { SolidRenderer } from '../../solid';
 import { getSlashItems, type SlashItem } from './items';
 import { SlashMenuList, type SlashMenuListProps } from './slash-menu-list';
 

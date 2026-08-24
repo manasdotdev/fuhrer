@@ -11,18 +11,11 @@ export type SlashItem = {
 const SLASH_ITEMS: SlashItem[] = [
   {
     title: 'Image',
-    subtext: 'Embed an image from a URL',
-    aliases: ['img', 'picture', 'photo'],
+    subtext: 'Upload or drop an image',
+    aliases: ['img', 'picture', 'photo', 'upload'],
     group: 'Media',
     command: ({ editor, range }) => {
-      const url = window.prompt('Image URL');
-
-      if (!url) {
-        editor.chain().focus().deleteRange(range).run();
-        return;
-      }
-
-      editor.chain().focus().deleteRange(range).setImage({ src: url }).run();
+      editor.chain().focus().deleteRange(range).setImageUploadNode().run();
     },
   },
   {
