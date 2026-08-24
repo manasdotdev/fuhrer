@@ -11,7 +11,7 @@
   "arrowParens": "always",
   "sortImports": true,
   "sortTailwindcss": {
-    "stylesheet": "./src/frontend/index.css",
+    "stylesheet": "./src/app/app.css",
     "functions": ["clsx", "cn"],
     "preserveWhitespace": true
   }

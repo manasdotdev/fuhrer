@@ -1,11 +1,11 @@
 import type { Component } from 'solid-js';
 
-import FuhrerEditor from '../editor/component/tiptap';
+import { DefaultEditor } from '../editor';
 
 const PostPage: Component = () => {
   return (
     <div>
-      <FuhrerEditor />
+      <DefaultEditor />
     </div>
   );
 };

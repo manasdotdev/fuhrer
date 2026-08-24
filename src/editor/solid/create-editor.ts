@@ -44,6 +44,10 @@ function depsEqual(a: readonly unknown[] | undefined, b: readonly unknown[] | un
   return a.every((dep, index) => Object.is(dep, b[index]));
 }
 
+function omitUndefined<T extends Record<string, unknown>>(value: T): Partial<T> {
+  return Object.fromEntries(Object.entries(value).filter(([, entry]) => entry !== undefined)) as Partial<T>;
+}
+
 /**
  * Create a TipTap `Editor` bound to the current Solid reactive owner.
  *
@@ -53,6 +57,7 @@ function depsEqual(a: readonly unknown[] | undefined, b: readonly unknown[] | un
  * - Instance identity is stable across transactions (no force-updates).
  * - Recreates when `extensions` identity changes, or when `deps` change.
  * - Syncs `editable` without recreating the editor.
+ * - Omits `undefined` option keys so TipTap defaults (e.g. `editable: true`) stay intact.
  *
  * @see https://tiptap.dev/docs/editor/api/editor
  */
@@ -60,7 +65,7 @@ export function createEditor(options: Accessor<CreateEditorOptions>, config: Cre
   const [editor, setEditor] = createSignal<Editor | undefined>(undefined);
   const owner = getOwner();
 
-  const getLatestOptions = (): CreateEditorOptions => options();
+  const getLatestOptions = (): CreateEditorOptions => omitUndefined(options() as Record<string, unknown>) as CreateEditorOptions;
 
   const createInstance = (): Editor => {
     const latest = getLatestOptions();

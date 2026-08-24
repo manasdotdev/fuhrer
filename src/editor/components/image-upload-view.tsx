@@ -2,9 +2,9 @@ import { FileUpload } from '@ark-ui/solid/file-upload';
 import type { Component, JSX } from 'solid-js';
 import { createSignal } from 'solid-js';
 
-import type { SolidNodeViewProps } from '../solid';
-import { BlockShell } from '../utils/node-block';
+import { BlockShell } from '../features/node-block';
 import { imageAltFromFileName } from '../utils/upload-image';
+import type { SolidNodeViewProps } from '../solid';
 
 type ImageUploadExtensionOptions = {
   type: string;

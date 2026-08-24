@@ -1,4 +1,6 @@
-@import 'tailwindcss';
+/* TipTap / ProseMirror editor surface
+ * Imported by templates (DefaultEditor), not by the app shell.
+ */
 
 .tiptap p.is-editor-empty:first-child::before {
   color: #adb5bd;

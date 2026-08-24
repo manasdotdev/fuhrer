@@ -1,6 +1,6 @@
 import Image from '@tiptap/extension-image';
 
-import { asDraggableBlock } from '../utils/node-block';
+import { asDraggableBlock } from '../features/node-block';
 
 export const CustomImage = asDraggableBlock(Image, {
   allowBase64: true,

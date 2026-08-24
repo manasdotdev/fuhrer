@@ -1,6 +1,6 @@
 /**
  * Shared class for block hover / selection chrome.
- * @see src/frontend/index.css
+ * @see src/editor/styles/editor.css
  */
 export const BLOCK_CHROME_CLASS = 'block-chrome';
 

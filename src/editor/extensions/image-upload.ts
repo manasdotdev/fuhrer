@@ -1,9 +1,9 @@
 import { mergeAttributes, Node } from '@tiptap/core';
 
-import { ImageUploadView } from '../component/image-upload';
-import { SolidNodeViewRenderer } from '../solid';
-import { withBlockHTMLAttributes } from '../utils/node-block';
+import { ImageUploadView } from '../components/image-upload-view';
+import { withBlockHTMLAttributes } from '../features/node-block';
 import { uploadImageAsDataUrl } from '../utils/upload-image';
+import { SolidNodeViewRenderer } from '../solid';
 
 export type ImageUploadFn = (file: File, onProgress?: (event: { progress: number }) => void, abortSignal?: AbortSignal) => Promise<string>;
 
