@@ -17,7 +17,7 @@ const PostPage: Component = () => {
   return (
     <div>
       <EditorProvider editor={editor}>
-        <EditorContent class='mx-auto mt-[20vh] max-w-[748px] rounded-md border border-gray-200 p-2' />
+        <EditorContent class='mx-auto mt-[20vh] max-w-186 rounded-md p-2' />
       </EditorProvider>
     </div>
   );
