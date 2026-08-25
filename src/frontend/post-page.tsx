@@ -3,8 +3,8 @@ import StarterKit from '@tiptap/starter-kit';
 import type { Component } from 'solid-js';
 
 import { DividerNode } from '../editor/node-blocks/divider';
-import { ImageNode } from '../editor/node-blocks/image';
-import { ImageUploadNode } from '../editor/node-blocks/image-upload';
+import { ImageNode, ImageUploadNode } from '../editor/node-blocks/image';
+import { VideoNode } from '../editor/node-blocks/video';
 import { SlashCommands } from '../editor/slash-commands/slash-commands';
 import { createEditor, EditorContent, EditorProvider } from '../editor/solid-bindings';
 import { ImageFileHandler } from '../editor/utilities/image-file-handler';
@@ -23,6 +23,7 @@ const PostPage: Component = () => {
       DividerNode,
       ImageNode,
       ImageUploadNode,
+      VideoNode,
       // helper extensions
       ImageFileHandler,
       SlashCommands,

@@ -1,6 +1,6 @@
 import type { Editor, Range } from '@tiptap/core';
 
-export type SlashCommandIcon = 'image' | 'divider' | 'heading';
+export type SlashCommandIcon = 'image' | 'video' | 'divider' | 'heading';
 
 export type SlashCommandItem = {
   title: string;
@@ -16,6 +16,14 @@ export const SLASH_COMMANDS: SlashCommandItem[] = [
     keywords: ['img', 'photo', 'picture'],
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).insertImageUpload().run();
+    },
+  },
+  {
+    title: 'Video',
+    icon: 'video',
+    keywords: ['movie', 'mp4', 'webm', 'clip'],
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).insertVideo().run();
     },
   },
   {

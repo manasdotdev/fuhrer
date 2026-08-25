@@ -8,6 +8,7 @@ import styles from '../styles/slash-commands.module.css';
 
 const ICON_BY_NAME: Record<SlashCommandIcon, () => JSX.Element> = {
   image: ICONS.Image,
+  video: ICONS.Video,
   divider: ICONS.Divider,
   heading: ICONS.Heading,
 };

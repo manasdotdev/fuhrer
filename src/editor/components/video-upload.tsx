@@ -3,12 +3,13 @@ import { Show, createSignal } from 'solid-js';
 
 import { NodeViewWrapper, type SolidNodeViewProps } from '../solid-bindings';
 import { ICONS } from '../styles/icons';
+import { VideoPlayer } from './video-player';
 
-import styles from '../styles/image-upload.module.css';
+import styles from '../styles/video-upload.module.css';
 
 type MetaField = 'caption' | 'alt';
 
-export const ImageUploadView = (props: SolidNodeViewProps) => {
+export const VideoUploadView = (props: SolidNodeViewProps) => {
   const [metaField, setMetaField] = createSignal<MetaField>('caption');
 
   const src = () => props.node.attrs.src as string | null;
@@ -16,14 +17,25 @@ export const ImageUploadView = (props: SolidNodeViewProps) => {
   const alt = () => (props.node.attrs.alt as string) ?? '';
 
   const metaValue = () => (metaField() === 'caption' ? caption() : alt());
-  const metaPlaceholder = () => (metaField() === 'caption' ? 'Type caption for image (optional)' : 'Type alt text for image (optional)');
+  const metaPlaceholder = () =>
+    metaField() === 'caption' ? 'Type caption for video (optional)' : 'Type alt text for video (optional)';
 
   const onFile = (file: File) => {
     props.updateAttributes({ src: URL.createObjectURL(file) });
   };
 
+  const keepSelection = () => {
+    const pos = props.getPos();
+    if (typeof pos === 'number') {
+      props.editor.commands.setNodeSelection(pos);
+    }
+  };
+
   return (
-    <NodeViewWrapper class={styles.card} data-selected={props.selected ? 'true' : 'false'} data-has-src={src() ? 'true' : 'false'}>
+    <NodeViewWrapper
+      class={styles.card}
+      data-selected={props.selected ? 'true' : 'false'}
+      data-has-src={src() ? 'true' : 'false'}>
       <div class={styles.media}>
         <Show
           when={src()}
@@ -31,7 +43,7 @@ export const ImageUploadView = (props: SolidNodeViewProps) => {
             <FileUpload.Root
               class={styles.root}
               maxFiles={1}
-              accept='image/*'
+              accept='video/*'
               onFileAccept={(details) => {
                 const file = details.files[0];
                 if (file) onFile(file);
@@ -39,17 +51,17 @@ export const ImageUploadView = (props: SolidNodeViewProps) => {
               <FileUpload.Dropzone class={styles.dropzone} disableClick>
                 <FileUpload.Trigger class={styles.trigger}>
                   <span class={styles.dropzoneIcon}>
-                    <ICONS.Image />
+                    <ICONS.Video />
                   </span>
-                  <span class={styles.dropzoneLabel}>Click to select an image</span>
+                  <span class={styles.dropzoneLabel}>Click to select a video</span>
                 </FileUpload.Trigger>
               </FileUpload.Dropzone>
               <FileUpload.HiddenInput />
             </FileUpload.Root>
           }>
           {(url) => (
-            <div class={styles.figure} data-bubble-anchor='image-upload'>
-              <img class={styles.image} src={url()} alt={alt()} draggable={false} />
+            <div class={styles.figure} data-bubble-anchor='video-upload'>
+              <VideoPlayer src={url()} onInteract={keepSelection} />
             </div>
           )}
         </Show>
@@ -61,22 +73,14 @@ export const ImageUploadView = (props: SolidNodeViewProps) => {
           contentEditable={false}
           onMouseDown={(e) => {
             e.stopPropagation();
-            const pos = props.getPos();
-            if (typeof pos === 'number') {
-              props.editor.commands.setNodeSelection(pos);
-            }
+            keepSelection();
           }}>
           <input
             class={styles.captionInput}
             type='text'
             placeholder={metaPlaceholder()}
             value={metaValue()}
-            onFocus={() => {
-              const pos = props.getPos();
-              if (typeof pos === 'number') {
-                props.editor.commands.setNodeSelection(pos);
-              }
-            }}
+            onFocus={keepSelection}
             onInput={(e) => {
               const value = e.currentTarget.value;
               if (metaField() === 'caption') {

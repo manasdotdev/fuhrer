@@ -1,9 +1,9 @@
 import type { Editor } from '@tiptap/core';
 import FileHandler from '@tiptap/extension-file-handler';
 
-function insertImageUpload(editor: Editor, src: string, pos?: number) {
+function insertMediaNode(editor: Editor, type: 'imageUpload' | 'video', src: string, pos?: number) {
   const content = {
-    type: 'imageUpload',
+    type,
     attrs: { src, caption: '', alt: '' },
   };
 
@@ -18,17 +18,23 @@ function insertImageUpload(editor: Editor, src: string, pos?: number) {
 export const ImageFileHandler = FileHandler.configure({
   consumePasteEvent: true,
   onDrop: (editor, files, pos) => {
-    files
-      .filter((file) => file.type.startsWith('image/'))
-      .forEach((file) => {
-        insertImageUpload(editor, URL.createObjectURL(file), pos);
-      });
+    files.forEach((file) => {
+      const src = URL.createObjectURL(file);
+      if (file.type.startsWith('image/')) {
+        insertMediaNode(editor, 'imageUpload', src, pos);
+      } else if (file.type.startsWith('video/')) {
+        insertMediaNode(editor, 'video', src, pos);
+      }
+    });
   },
   onPaste: (editor, files) => {
-    files
-      .filter((file) => file.type.startsWith('image/'))
-      .forEach((file) => {
-        insertImageUpload(editor, URL.createObjectURL(file));
-      });
+    files.forEach((file) => {
+      const src = URL.createObjectURL(file);
+      if (file.type.startsWith('image/')) {
+        insertMediaNode(editor, 'imageUpload', src);
+      } else if (file.type.startsWith('video/')) {
+        insertMediaNode(editor, 'video', src);
+      }
+    });
   },
 });
