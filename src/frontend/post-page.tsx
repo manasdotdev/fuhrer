@@ -4,7 +4,9 @@ import type { Component } from 'solid-js';
 
 import { DividerNode } from '../editor/node-blocks/divider';
 import { ImageNode } from '../editor/node-blocks/image';
-import { createEditor, EditorContent, EditorProvider } from '../editor/solid';
+import { SlashCommands } from '../editor/slash-commands/slash-commands';
+import { createEditor, EditorContent, EditorProvider } from '../editor/solid-bindings';
+import { ImageFileHandler } from '../editor/utilities/image-file-handler';
 
 const PostPage: Component = () => {
   const editor = createEditor(() => ({
@@ -19,22 +21,15 @@ const PostPage: Component = () => {
       // Custom nodes
       DividerNode,
       ImageNode,
+      // helper extensions
+      ImageFileHandler,
+      SlashCommands,
     ],
     autofocus: true,
   }));
 
-  const addImage = () => {
-    const url = window.prompt('URL');
-    if (url) {
-      editor()?.chain().focus().setImage({ src: url }).run();
-    }
-  };
-
   return (
     <div>
-      <button onClick={addImage} class='m-2 cursor-pointer rounded-md bg-green-700 p-2 text-sm font-medium text-white hover:bg-green-800'>
-        Add Image
-      </button>
       <EditorProvider editor={editor}>
         <EditorContent class='mx-auto mt-[20vh] max-w-186 rounded-md p-2' />
       </EditorProvider>

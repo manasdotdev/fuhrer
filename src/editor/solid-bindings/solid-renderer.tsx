@@ -46,7 +46,12 @@ export class SolidRenderer<P extends Record<string, unknown>> {
   }
 
   updateProps(props: Partial<P>): void {
-    this.setProps(props as P);
+    // Path + updater form so function values (command handlers, etc.) are
+    // stored as data, not invoked as Solid store updaters.
+    for (const key of Object.keys(props) as Array<keyof P & string>) {
+      const value = props[key];
+      (this.setProps as (key: string, updater: () => unknown) => void)(key, () => value);
+    }
   }
 
   destroy(): void {
