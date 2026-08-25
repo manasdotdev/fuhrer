@@ -1,0 +1,205 @@
+.card {
+  box-sizing: border-box;
+  width: 738px;
+  max-width: 100%;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* Empty upload placeholder — fixed initial size */
+.card[data-has-src='false'] {
+  height: 462px;
+}
+
+.card[data-has-src='false'][data-selected='true'] {
+  height: 502px;
+}
+
+/* Filled — full card width; height follows the image */
+.card[data-has-src='true'] {
+  height: auto;
+}
+
+.card:hover {
+  border-color: #30cf43;
+}
+
+.card[data-selected='true'],
+.card[data-selected='true']:hover {
+  border-color: #30cf43;
+}
+
+.media {
+  width: 100%;
+  display: flex;
+  background: #fafafa;
+}
+
+.card[data-has-src='false'] .media {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.card[data-has-src='true'] .media {
+  flex: 0 0 auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+/* Anchor for a future BubbleMenu when the image card is selected */
+.figure {
+  display: block;
+  max-width: 100%;
+  line-height: 0;
+}
+
+.root {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropzone {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  cursor: default;
+}
+
+.dropzone[data-dragging] {
+  background: #f0fdf4;
+}
+
+/* Only this center control opens the file picker */
+.trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+/* .trigger:hover {
+  background: rgba(0, 0, 0, 0.03);
+} */
+
+.dropzoneIcon {
+  width: 3rem;
+  height: 3rem;
+  color: #c4c4c4;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.dropzoneIcon :global(svg) {
+  width: 100%;
+  height: 100%;
+}
+
+.dropzoneLabel {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  pointer-events: none;
+}
+
+.image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 462px;
+}
+
+/* Full-width 40px bar under the media */
+.captionBar {
+  box-sizing: border-box;
+  flex: 0 0 40px;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0 0.75rem;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.captionInput {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.875rem;
+  line-height: 40px;
+  color: #374151;
+  text-align: center;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.captionInput::placeholder {
+  color: #9ca3af;
+  text-align: center;
+}
+
+.altButton {
+  flex-shrink: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+  cursor: pointer;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.altButton:hover,
+.altButtonActive {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.altButtonActive {
+  border-color: #30cf43;
+  background: #f0fdf4;
+  color: #15803d;
+}

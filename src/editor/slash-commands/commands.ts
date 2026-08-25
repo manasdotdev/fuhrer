@@ -15,9 +15,7 @@ export const SLASH_COMMANDS: SlashCommandItem[] = [
     icon: 'image',
     keywords: ['img', 'photo', 'picture'],
     command: ({ editor, range }) => {
-      editor.chain().focus().deleteRange(range).run();
-      const url = window.prompt('URL');
-      if (url) editor.chain().focus().setImage({ src: url }).run();
+      editor.chain().focus().deleteRange(range).insertImageUpload().run();
     },
   },
   {
