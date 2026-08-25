@@ -1,0 +1,17 @@
+.divider_node {
+  border: 2px solid transparent;
+  height: 2.25rem;
+  margin: 2rem 0;
+  cursor: grab;
+  background: linear-gradient(#dde1e5, #dde1e5) no-repeat center / 100% 1px;
+}
+
+.divider_node:hover {
+  border-width: 1px;
+  border-color: #30cf43;
+}
+
+.divider_node:global(.ProseMirror-selectednode) {
+  border-width: 2px;
+  border-color: #30cf43;
+}

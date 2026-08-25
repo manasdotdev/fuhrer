@@ -1,5 +1,5 @@
 {
-  "name": "vite-template-solid",
+  "name": "fuhrer-editor",
   "version": "0.0.0",
   "description": "",
   "license": "MIT",
@@ -13,9 +13,14 @@
   },
   "dependencies": {
     "@tiptap/core": "^3.30.2",
+    "@tiptap/extension-file-handler": "^3.30.3",
+    "@tiptap/extension-horizontal-rule": "^3.30.3",
+    "@tiptap/extension-image": "^3.30.3",
     "@tiptap/extensions": "^3.30.2",
     "@tiptap/pm": "^3.30.2",
     "@tiptap/starter-kit": "^3.30.2",
+    "install": "^0.13.0",
+    "npm": "^12.0.2",
     "solid-js": "^1.9.9"
   },
   "devDependencies": {

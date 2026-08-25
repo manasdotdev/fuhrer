@@ -1,0 +1,20 @@
+.image_node {
+  border: 2px solid transparent;
+  cursor: grab;
+  display: block;
+  height: auto;
+  margin: 1.5rem auto;
+  max-width: 100%;
+}
+
+.image_node:hover {
+  border-width: 1px;
+  padding: 1px;
+  border-color: #30cf43;
+}
+
+.image_node:global(.ProseMirror-selectednode) {
+  border-width: 2px;
+  padding: 1px;
+  border-color: #30cf43;
+}
